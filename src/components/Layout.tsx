@@ -8,34 +8,26 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-primary to-secondary py-10 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-lg shadow-2xl overflow-hidden">
-          <header className="p-4 border-b border-gray-200">
-            <div className="flex justify-between items-center">
-              <Link to="/" className="flex items-center space-x-2">
-                <div className="h-8 w-auto bg-primary p-1 rounded flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">AZUD</span>
+    <div className="min-h-screen bg-light py-10 px-4">
+      <div className="max-w-5xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+          <header className="p-5 border-b border-gray-100 bg-gradient-to-r from-primary to-primary/90">
+            <div className="flex justify-center items-center">
+              <Link to="/" className="flex items-center space-x-3">
+                <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow-md">
+                  <span className="text-primary font-bold text-lg">A</span>
                 </div>
-                <span className="text-primary font-bold text-xl">Calculadoras de Financiación</span>
+                <span className="text-white font-bold text-2xl">Calculadoras de Financiación</span>
               </Link>
-              <nav>
-                <Link 
-                  to="/" 
-                  className="text-primary hover:text-secondary transition-colors font-medium"
-                >
-                  Inicio
-                </Link>
-              </nav>
             </div>
           </header>
           
-          <main className="p-6">
+          <main className="p-6 bg-light/30">
             {children}
           </main>
           
-          <footer className="bg-gray-100 p-4 text-center text-sm text-gray-600">
-            <p>© {new Date().getFullYear()} AZUD. Todos los derechos reservados.</p>
+          <footer className="bg-primary/5 p-5 text-center">
+            <p className="text-muted text-sm">© {new Date().getFullYear()} AZUD. Todos los derechos reservados.</p>
           </footer>
         </div>
       </div>

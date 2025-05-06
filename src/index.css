@@ -41,35 +41,35 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-light text-foreground;
   }
 }
 
 @layer components {
   .section-header {
-    @apply bg-primary text-white p-4 rounded-t-lg relative mb-6;
+    @apply bg-primary text-white p-5 rounded-t-lg relative mb-6 flex items-center justify-between shadow-md;
   }
   
   .form-container {
-    @apply max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md;
+    @apply max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-md border border-gray-100;
   }
   
   .form-input {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+    @apply w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200;
   }
   
   .form-select {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none bg-white bg-no-repeat;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-    background-position: right 0.5rem center;
+    @apply w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200 appearance-none bg-white bg-no-repeat;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23003865' viewBox='0 0 20 20'%3e%3cpath stroke='%23003865' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
     background-size: 1.5em 1.5em;
   }
   
   .btn {
-    @apply bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-secondary transition-colors duration-300 inline-block;
+    @apply bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors duration-300 inline-block shadow-md hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0;
   }
   
   .card {
-    @apply bg-white p-6 rounded-lg shadow-lg border border-gray-200 flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:border-primary;
+    @apply bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:border-secondary;
   }
 }
