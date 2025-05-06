@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { toast } from '@/components/ui/sonner';
+import Papa from 'papaparse';
 
 interface Cliente {
   Codigo: string;
@@ -15,7 +16,8 @@ interface Cliente {
 export const useClienteActual = () => {
   const [clienteData, setClienteData] = useState<Cliente | null>(null);
   const [allClientes, setAllClientes] = useState<Cliente[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Error | null>(null);
   
   // Simular base de datos de clientes
   useEffect(() => {
@@ -49,17 +51,74 @@ export const useClienteActual = () => {
       }
     ];
     
-    setAllClientes(mockClientes);
+    // Intentar cargar datos de clientes desde CSV
+    const loadCSV = async () => {
+      try {
+        const response = await fetch('/bbdd_calculadora.csv');
+        if (!response.ok) {
+          console.log('Using mock client data because CSV file is not available yet');
+          setAllClientes(mockClientes);
+          setLoading(false);
+          return;
+        }
+        
+        const text = await response.text();
+        
+        Papa.parse(text, {
+          header: true,
+          complete: (results) => {
+            const clientesData: Cliente[] = [];
+            
+            results.data.forEach((row: any) => {
+              const clientCode = String(row.Codigo || '').trim();
+              if (clientCode) {
+                clientesData.push({
+                  Codigo: clientCode,
+                  Razon_Social: row.Razon_Social || '',
+                  NIF: row.NIF || '',
+                  AREA: row.AREA || '',
+                  Credito_asegurado: parseFloat(String(row.Credito_asegurado || '0').replace(',', '.')),
+                  Credito_empresa: parseFloat(String(row.Credito_empresa || '0').replace(',', '.')),
+                  Termino_pago: row.Termino_pago || '60'
+                });
+              }
+            });
+            
+            if (clientesData.length > 0) {
+              setAllClientes(clientesData);
+            } else {
+              setAllClientes(mockClientes);
+            }
+            
+            setLoading(false);
+          },
+          error: (parseError: any) => {
+            console.error('Error al analizar el CSV:', parseError);
+            // Fallback to mock data
+            setAllClientes(mockClientes);
+            setLoading(false);
+          }
+        });
+      } catch (fetchError) {
+        console.error('Error al cargar el CSV:', fetchError);
+        // Fallback to mock data
+        setAllClientes(mockClientes);
+        setLoading(false);
+      }
+    };
+    
+    loadCSV();
   }, []);
   
   // Función para cargar datos de un cliente específico
   const loadClientData = (codigo: string) => {
     setLoading(true);
     
+    // Buscar en la lista de clientes
+    const cliente = allClientes.find(c => c.Codigo === codigo);
+    
     // Simular llamada a API con un timeout
     setTimeout(() => {
-      const cliente = allClientes.find(c => c.Codigo === codigo);
-      
       if (cliente) {
         setClienteData(cliente);
         setLoading(false);
