@@ -23,6 +23,9 @@ export default {
 				sans: ['Montserrat', 'sans-serif'],
 				montserrat: ['Montserrat', 'sans-serif'],
 			},
+			transitionDuration: {
+				'600': '600ms',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

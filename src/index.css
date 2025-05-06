@@ -73,7 +73,7 @@
   
   .azud-btn::before {
     content: '';
-    @apply absolute top-0 left-0 w-full h-full bg-secondary transform scale-x-0 origin-left transition-transform duration-600 -z-10;
+    @apply absolute top-0 left-0 w-full h-full bg-secondary transform scale-x-0 origin-left transition-transform duration-500 -z-10;
   }
   
   .azud-btn:hover {
