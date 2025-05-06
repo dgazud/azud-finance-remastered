@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,7 +39,7 @@
   }
 
   * {
-    @apply border-border;
+    @apply border-border font-montserrat;
   }
 
   body {
@@ -65,8 +67,25 @@
     background-size: 1.5em 1.5em;
   }
   
+  .azud-btn {
+    @apply relative overflow-hidden inline-flex items-center justify-center px-6 py-3 bg-white text-primary border border-primary font-semibold rounded-full transition-all duration-300 z-10;
+  }
+  
+  .azud-btn::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full bg-secondary transform scale-x-0 origin-left transition-transform duration-600 -z-10;
+  }
+  
+  .azud-btn:hover {
+    @apply text-primary;
+  }
+  
+  .azud-btn:hover::before {
+    @apply transform scale-x-100;
+  }
+  
   .btn {
-    @apply bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors duration-300 inline-block shadow-md hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0;
+    @apply azud-btn;
   }
   
   .card {

@@ -15,12 +15,12 @@ export const Button = ({
   className,
   ...props
 }: ButtonProps) => {
-  const baseClasses = "relative overflow-hidden rounded-full font-bold transition-all duration-300 ease-out focus:outline-none px-6 py-3";
+  const baseClasses = "azud-btn";
   
   const variantClasses = {
-    primary: "bg-primary text-white hover:bg-opacity-90",
-    secondary: "bg-secondary text-white hover:bg-opacity-90",
-    outline: "bg-transparent border-2 border-secondary text-secondary hover:text-white hover:bg-secondary",
+    primary: "bg-primary text-white hover:text-primary border-primary",
+    secondary: "bg-secondary text-primary border-secondary",
+    outline: "bg-transparent border-2 border-secondary text-secondary hover:text-primary",
   };
   
   const widthClasses = fullWidth ? "w-full" : "";
@@ -30,7 +30,7 @@ export const Button = ({
       className={cn(baseClasses, variantClasses[variant], widthClasses, className)}
       {...props}
     >
-      {children}
+      <span className="relative z-10">{children}</span>
     </button>
   );
 };
