@@ -68,7 +68,7 @@
   }
   
   .azud-btn {
-    @apply relative overflow-hidden inline-flex items-center justify-center px-6 py-3 bg-white text-primary border border-primary font-semibold rounded-full transition-all duration-300 z-10;
+    @apply relative overflow-hidden inline-flex items-center justify-center px-6 py-3 bg-white text-primary border border-primary font-semibold rounded-md transition-all duration-300 z-10;
   }
   
   .azud-btn::before {

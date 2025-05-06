@@ -14,8 +14,12 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           <header className="p-5 border-b border-gray-100 bg-gradient-to-r from-primary to-primary/90">
             <div className="flex justify-center items-center">
               <Link to="/" className="flex items-center space-x-3">
-                <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center shadow-md">
-                  <span className="text-primary font-bold text-lg">A</span>
+                <div className="h-10 w-10 bg-white rounded-md flex items-center justify-center shadow-md overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=100&h=100&fit=crop" 
+                    alt="AZUD Logo" 
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <span className="text-white font-bold text-2xl">Calculadoras de Financiación</span>
               </Link>

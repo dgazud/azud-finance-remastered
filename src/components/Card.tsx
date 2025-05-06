@@ -33,7 +33,7 @@ export const Card: React.FC<CardProps> = ({
         )}
         <div className="mt-auto pt-5">
           <Link to={href} className="inline-block w-full">
-            <button className="azud-btn w-full font-medium">
+            <button className="azud-btn w-full font-medium rounded-md">
               <span className="relative z-10">{buttonText}</span>
             </button>
           </Link>
